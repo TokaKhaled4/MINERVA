@@ -1,0 +1,196 @@
+/* ── Page shell ── */
+.mm-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.mm-page-header {
+  padding: 20px 28px 0;
+  flex-shrink: 0;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Inter'), url('Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+.mm-page-title {
+  font-family: 'Inter';
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mm-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 10px;
+  background: transparent;
+  color: #858585;
+  border: 1.8px solid #858585;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.mm-download-btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.mm-download-btn:hover {
+  background: #cfcfcf;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.mm-download-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Canvas fills remaining height ── */
+.mm-canvas {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-hint {
+  text-align: center;
+  font-size: 0.73rem;
+  color: #B15757;
+  letter-spacing: 0.04em;
+  margin: 0 0 6px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* SVG inherits page background */
+.mm-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  display: block;
+  background: transparent;
+}
+
+.mm-svg:active {
+  cursor: grabbing;
+}
+
+/* Export bg rect is hidden at runtime; shown only during PNG export via JS */
+.mm-export-bg {
+  display: none;
+}
+
+/* ── Empty state ── */
+.mm-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mm-empty-icon {
+  width: 200px;
+  height: 120px;
+  opacity: 0.8;
+}
+
+.mm-empty-label {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #8A3A3A;
+  max-width: 300px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mm-empty-label strong {
+  color: #EB5951;
+}
+
+/* ── Generate button row ── */
+.mm-gen-button {
+  padding: 20px 28px 28px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* ── SVG element behaviour ── */
+.mm-svg-text {
+  pointer-events: none;
+  user-select: none;
+}
+
+.mm-chevron {
+  pointer-events: none;
+}
+
+.mm-toggle-btn {
+  cursor: pointer;
+}
+
+/* ── Focus feature ── */
+.mm-svg g {
+  transition: opacity 0.25s ease;
+}
+
+.mm-topic-node {
+  cursor: pointer;
+}
+
+.mm-root-node {
+  cursor: pointer;
+}
+
+@keyframes mm-kw-enter {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4) scaleY(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+}
+ 
+@keyframes mm-kw-exit {
+  from {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0.4) scaleY(0.6);
+  }
+}
+ 
+.mm-kw-enter {
+  animation: mm-kw-enter 260ms cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+ 
+.mm-kw-exit {
+  animation: mm-kw-exit 220ms cubic-bezier(0.4, 0, 1, 1) both;
+}

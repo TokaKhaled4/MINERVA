@@ -1,0 +1,192 @@
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2rem; 
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 64px;
+  padding: 0 2rem;
+
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.navbar-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.5px;
+  box-shadow: 0 2px 8px #f29393;
+}
+
+.Navlogo {
+  width: 35px;
+  height: 35px;
+}
+
+@font-face {
+  font-family: 'Matura MT Script Capitals';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Matura MT Script Capitals'), url('MATURASC_1.woff') format('woff');
+}
+
+.navbar-app-name {
+  font-family: 'Matura MT Script Capitals';
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: #1a1a2e;
+}
+
+.navbar-links {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.navbar-links.shifted {
+  transform: translateX(160px);
+}
+
+.navbar-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 4px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.navbar-hamburger:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.navbar-hamburger span {
+  display: block;
+  width: 23px;
+  height: 3px;
+  background: #1a1a2e;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #a48f8f;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link:hover {
+  color: #8a3a3a;
+  background: rgba(162, 56, 56, 0.05);
+}
+
+.nav-link.active {
+  color: #EB5951;
+  background: rgba(162, 56, 56, 0.05);
+  font-weight: 600;
+}
+
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+}
+
+.navbar-user-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.navbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b6af5, #9b59f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(91, 106, 245, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navbar-avatar:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(91, 106, 245, 0.4);
+}
+
+.navbar-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-avatar-initials {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+
+@media (max-width: 600px) {
+  .navbar-user-name {
+    display: none;
+  }
+
+  .navbar-links {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.82rem;
+  }
+}

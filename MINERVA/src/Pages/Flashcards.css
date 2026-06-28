@@ -1,0 +1,332 @@
+/* ─── Page shell — mirrors Mindmap.css ──────────────────────────────────────── */
+.fc-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: inherit;
+  position: relative;
+}
+
+.fc-page-header {
+  padding: 20px 28px 0;
+  flex-shrink: 0;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Inter'), url('Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+.fc-page-title {
+  font-family: 'Inter';
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Empty state ────────────────────────────────────────────────────────────── */
+.fcd-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;                /* was: 14px */
+  padding: 2rem;
+  text-align: center;
+}
+
+.fcd-empty-icon svg {
+  width: 200px;             /* was: 90px */
+  height: 120px;            /* was: auto */
+  opacity: 0.85;
+}
+
+.fcd-empty-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(255, 252, 252, 0.55);
+  margin: 0;
+}
+
+.fcd-empty-sub {
+  font-size: 0.88rem;
+  color: rgba(255, 252, 252, 0.35);
+  margin: 0;
+}
+
+.fcd-empty-sub strong {
+  color: rgba(255, 252, 252, 0.6);
+}
+
+/* ─── Canvas ─────────────────────────────────────────────────────────────────── */
+.fc-canvas {
+  flex: 1;
+  overflow-y: hidden;
+  padding: 28px 32px 120px;
+}
+
+.fc-page > .fc-gen-button {
+  margin-top: auto;
+}
+
+/* ─── Generate button ────────────────────────────────────────────────────────── */
+.fc-gen-button {
+  padding: 20px 28px 28px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ─── Deck root ──────────────────────────────────────────────────────────────── */
+.fcd-root {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.fcd-deck-meta {
+  font-size: 0.78rem;
+  color: rgba(255, 252, 252, 0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.fcd-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ─── Topic section ──────────────────────────────────────────────────────────── */
+.fcd-topic {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fcd-topic-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--th-from), var(--th-to));
+  color: var(--th-text);
+}
+
+.fcd-topic-idx {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+.fcd-topic-title {
+  font-size: 1rem;
+  font-weight: 700;
+  flex: 1;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.fcd-topic-count {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Cards grid ─────────────────────────────────────────────────────────────── */
+.fcd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* ─── Card tile ──────────────────────────────────────────────────────────────── */
+.fcd-tile {
+  border-radius: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--tile-from), var(--tile-to));
+  color: var(--tile-text, #fffcfc);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.fcd-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fcd-tile:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.fcd-tile:active { transform: scale(0.99); }
+
+.fcd-tile--flipping {
+  transform: rotateX(90deg) scale(0.97);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fcd-tile--revealed {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.12),
+              0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.fcd-tile-inner {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 190px;
+}
+
+/* ─── Card body ──────────────────────────────────────────────────────────────── */
+.fcd-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fcd-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.16);
+  color: inherit;
+  width: fit-content;
+}
+
+.fcd-question {
+  font-size: 0.97rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: inherit;
+  margin: 0;
+}
+
+.fcd-question--blank { font-size: 0.93rem; }
+
+/* ─── Multiple choice options ────────────────────────────────────────────────── */
+.fcd-options {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0;
+  margin: 0;
+}
+
+.fcd-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.83rem;
+  line-height: 1.4;
+  border: 1px solid transparent;
+  transition: background 180ms, border-color 180ms;
+}
+
+.fcd-option--correct {
+  background: rgba(46, 204, 113, 0.18) !important;
+  border-color: var(--correct-clr, #2ecc71) !important;
+}
+
+.fcd-option--wrong {
+  background: rgba(255, 255, 255, 0.04) !important;
+  opacity: 0.45;
+}
+
+.fcd-opt-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fcd-opt-text { flex: 1; }
+
+.fcd-tick {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--correct-clr, #2ecc71);
+}
+
+/* ─── Fill blank ─────────────────────────────────────────────────────────────── */
+.fcd-blank {
+  display: inline-block;
+  min-width: 72px;
+  padding: 0 3px 2px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  text-align: center;
+  transition: color 200ms, border-color 200ms;
+}
+
+.fcd-blank--revealed {
+  color: var(--correct-clr, #2ecc71);
+  border-bottom-color: var(--correct-clr, #2ecc71);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.fcd-answer-note {
+  font-size: 0.8rem;
+  color: rgba(255, 252, 252, 0.55);
+  margin: 0;
+}
+
+/* ─── Hint ───────────────────────────────────────────────────────────────────── */
+.fcd-hint {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.28);
+  text-align: right;
+  margin-top: auto;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .fc-page-header { padding: 16px 16px 0; }
+  .fc-canvas { padding: 20px 16px 40px; }
+  .fcd-grid { grid-template-columns: 1fr; }
+  .fc-gen-button {
+    padding: 16px;
+  }
+}

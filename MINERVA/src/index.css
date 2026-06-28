@@ -1,0 +1,15 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: #fff;
+}
+
+/* ── Sidebar push layout ── */
+.main-content {
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+.main-content.sidebar-open {
+  margin-left: 320px; /* match your sidebar width in Sidebar.css */
+}
