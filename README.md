@@ -156,21 +156,38 @@ Slide Extraction          Transcript
 
 ```text
 MINERVA/
+├── frontend/                    # React + Vite frontend
+│   ├── public/                  # Static assets and fonts
+│   ├── src/
+│   │   ├── assets/              # Images and icons
+│   │   ├── Components/          # Reusable UI components
+│   │   ├── Pages/               # Application pages
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── package.json
+│   └── vite.config.ts
 │
-├── frontend/              # React application
-├── backend/               # FastAPI backend
-├── models/                # AI models and inference
-├── pipelines/
-│   ├── transcription/
-│   ├── summarization/
-│   ├── rag/
-│   ├── flashcards/
-│   ├── quizzes/
-│   ├── image_retrieval/
-│   └── mindmap/
-├── datasets/
-├── docs/
-└── README.md
+├── backend/                     # FastAPI backend
+│   ├── api/                     # API routes
+│   ├── services/                # Business logic
+│   ├── pipelines/
+│   │   ├── transcription/
+│   │   ├── segmentation/
+│   │   ├── summarization/
+│   │   ├── rag/
+│   │   ├── flashcards/
+│   │   ├── quizzes/
+│   │   ├── image_retrieval/
+│   │   └── mindmap/
+│   ├── models/                  # Model loading and inference
+│   ├── utils/
+│   ├── main.py                  # FastAPI entry point
+│   └── requirements.txt
+│
+├── MINERVA Notebook.ipynb       # AI experimentation notebook
+├── README.md                    # Project documentation
+└── .gitignore                   # Git ignore rules
 ```
 
 ---
@@ -225,7 +242,3 @@ Developed by students from the **Scientific Computing Department**
 - Dr. Dina Khattab
 - T.A. Mohamed Essam
 - T.A. Nouran El-Sayed
-
-## License
-
-This project is released for academic and research purposes.
