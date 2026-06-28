@@ -239,6 +239,6 @@ Developed by students from the **Scientific Computing Department**
 
 ### Supervisors
 
-- Dr. Dina Khattab
+- Assoc. Prof. Dina Khattab
 - T.A. Mohamed Essam
 - T.A. Nouran El-Sayed
